@@ -3,6 +3,7 @@
 #include <vector>
 #include <opencv2/opencv.hpp>
 
+//my cv mat
 namespace selfcv
 {
     
@@ -25,7 +26,7 @@ namespace selfcv
         Mat t();
         Mat inv();
 
-        //same as inv
+        //same as inv,solve linear equations
         bool Solve(Mat A,Mat b,Mat x,int n);
 
         Mat& operator=(Mat &img);

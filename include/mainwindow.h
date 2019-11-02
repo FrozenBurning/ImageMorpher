@@ -20,7 +20,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    //select image QFiledialog
     QString selectimg();
+
+    //handler
     void mode_handler();
     void morpher_handler();
 
@@ -28,6 +32,8 @@ private:
     QImage cvMat2QImage(const cv::Mat &mat);
     cv::Mat QImage2cvMat(const QImage &img);
 
+
+    //some value
     int interpolation_method;
     int transformation_type;
     double radius;

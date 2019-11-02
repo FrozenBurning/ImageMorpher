@@ -26,18 +26,26 @@ private:
 
     cv::Mat img;
     cv::Mat tar_img;
+
+    //径向基
     double tps_U_function(cv::Point2d &src,cv::Point2d &des);
     double tps_U_function(double r);
+
+    //read control points
     std::vector<cv::Point2d> read_control_points(std::string filename);
+
+    //crop image to pretty size
     void scissors(cv::Mat &m);
     bool invalid_pixel(cv::Mat &m,int index,bool isrow);
 public:
     TPS(std::string src_file_name,std::string des_file_name);
     ~TPS();
 
+    //model solver, called only one time at the beginning for each case
     void model_solver();
     cv::Point2d TPS_transform(cv::Point2d &p);
 
+    //entrance for frontend
     std::string begin_trans(int inter_method_type);
 
     bool isInitialized();

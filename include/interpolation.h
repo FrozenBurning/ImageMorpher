@@ -2,6 +2,7 @@
 #include <opencv2/opencv.hpp>
 #include "include/SelfCV.h"
 
+//Interpolation methods
 cv::Vec3b nearestInterpolation(cv::Mat &img, cv::Point2d &p);
 cv::Vec3b bilinearInterpolation(cv::Mat &img,cv::Point2d &p);
 cv::Vec3b bicubicInterpolation(cv::Mat &img,cv::Point2d &p);
