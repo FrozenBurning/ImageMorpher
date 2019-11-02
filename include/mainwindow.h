@@ -37,6 +37,7 @@ private:
     QPixmap *original_img;
     QPixmap *target_img;
     QPixmap *result_img;
+    QString prev_path;
 
     std::string* original_img_path;
     std::string* target_img_path;

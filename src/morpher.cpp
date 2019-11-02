@@ -40,6 +40,7 @@ bool morpher(std::string *original_img_path, int transformation_type, int interp
             cv::imwrite(*result_img_path, newimg);
         }
         else{
+            *result_img_path = "./tmp.png";
             cv::imwrite(*result_img_path,newimg);
         }
         return true;
@@ -77,6 +78,7 @@ bool morpher(std::string *original_img_path, int transformation_type, int interp
             cv::imwrite(*result_img_path, newimg);
         }
         else{
+            *result_img_path = "./tmp.png";
             cv::imwrite(*result_img_path,newimg);
         }
         return true;

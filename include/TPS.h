@@ -2,12 +2,12 @@
 #include <opencv2/opencv.hpp>
 #include <math.h>
 #include "interpolation.h"
-
+#include "include/SelfCV.h"
 class TPS
 {
 private:
-    cv::Mat input;//distance between control point and p
-    cv::Mat output;
+    selfcv::Mat input;//distance between control point and p
+    selfcv::Mat output;
 
     std::vector<cv::Point2d> control_points;
     std::vector<cv::Point2d> target_points;
@@ -15,17 +15,16 @@ private:
     bool isReady;
 
     int n;
-    cv::Mat K;//[n*n]
-    cv::Mat P;//[n*3]
-    cv::Mat L;//{[K,P],[P.t,0]}
+    selfcv::Mat K;//[n*n]
+    selfcv::Mat P;//[n*3]
+    selfcv::Mat L;//{[K,P],[P.t,0]}
 
-    cv::Mat V;//[2*n]
-    cv::Mat Y;
-    
-    cv::Mat params;//[w1,...,wn,a1,ax,ay]
+    selfcv::Mat V;//[2*n]
+    selfcv::Mat Y;
+
+    selfcv::Mat params;//[w1,...,wn,a1,ax,ay]
 
     cv::Mat img;
-    cv::Mat test;
     cv::Mat tar_img;
     double tps_U_function(cv::Point2d &src,cv::Point2d &des);
     double tps_U_function(double r);

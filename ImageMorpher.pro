@@ -29,14 +29,16 @@ SOURCES += \
     src/morpher.cpp \
     src/TPS.cpp \
     src/interpolation.cpp \
-    src/distortion.cpp
+    src/distortion.cpp \
+    src/SelfCV.cpp
 
 HEADERS += \
         include/mainwindow.h \
     include/TPS.h \
     include/morpher.h \
     include/distortion.h \
-    include/interpolation.h
+    include/interpolation.h \
+    include/SelfCV.h
 
 FORMS += \
         mainwindow.ui

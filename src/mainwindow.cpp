@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     target_img = new QPixmap(300,400);
     result_img = new QPixmap(300,400);
 
+    prev_path = "./";
+
     original_img_path = new std::string;
     target_img_path = new std::string;
     result_img_path = new std::string;
@@ -59,7 +61,7 @@ QString MainWindow::selectimg()
 
     fileDialog->setWindowTitle(tr("Select Image"));
 
-    fileDialog->setDirectory("../");
+    fileDialog->setDirectory(prev_path);
 
     fileDialog->setNameFilter(tr("Images(*.png *.jpg *.jpeg *.bmp)"));
 
@@ -73,9 +75,13 @@ QString MainWindow::selectimg()
         imgname = fileDialog->selectedFiles();
     }
     delete fileDialog;
+
     if(!imgname.empty())
     {
+        QFileInfo fileInfo(imgname.first());
+        prev_path = fileInfo.path();
         return imgname.first();
+
     }
     else
     {

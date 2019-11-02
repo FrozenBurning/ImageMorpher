@@ -7,9 +7,8 @@ cv::Vec3b nearestInterpolation(cv::Mat &img, cv::Point2d &p)
 
     if (newy < 0 || newx < 0 || newy > img.rows || newx > img.cols)
     {
-        return cv::Vec3b(0,0,0);
+        return cv::Vec3b(0, 0, 0);
     }
-    
 
     return img.at<cv::Vec3b>(newy, newx);
 }
@@ -21,9 +20,9 @@ cv::Vec3b bilinearInterpolation(cv::Mat &img, cv::Point2d &p)
     int next_x = bottom_x + 1;
     int next_y = bottom_y + 1;
 
-    if(bottom_x <0 ||bottom_y<0 || bottom_x > img.cols || bottom_y > img.rows)
+    if (bottom_x < 0 || bottom_y < 0 || bottom_x > img.cols || bottom_y > img.rows)
     {
-        return cv::Vec3b(0,0,0);
+        return cv::Vec3b(0, 0, 0);
     }
     return img.at<cv::Vec3b>(bottom_y, bottom_x) * (next_x - p.x) * (next_y - p.y) + img.at<cv::Vec3b>(bottom_y, next_x) * (p.x - bottom_x) * (next_y - p.y) + img.at<cv::Vec3b>(next_y, bottom_x) * (next_x - p.x) * (p.y - bottom_y) + img.at<cv::Vec3b>(next_y, next_x) * (p.x - bottom_x) * (p.y - bottom_y);
 }
@@ -36,9 +35,9 @@ cv::Vec3b bicubicInterpolation(cv::Mat &img, cv::Point2d &p)
     double u = p.x - bottom_x;
     double v = p.y - bottom_y;
 
-    if(bottom_x <0 ||bottom_y<0 || bottom_x > img.cols || bottom_y > img.rows)
+    if (bottom_x < 0 || bottom_y < 0 || bottom_x > img.cols || bottom_y > img.rows)
     {
-        return cv::Vec3b(0,0,0);
+        return cv::Vec3b(0, 0, 0);
     }
 
     double target;
@@ -46,10 +45,10 @@ cv::Vec3b bicubicInterpolation(cv::Mat &img, cv::Point2d &p)
     std::vector<double> C = {BiCubic_kernel(1 + u), BiCubic_kernel(u), BiCubic_kernel(1 - u), BiCubic_kernel(2 - u)};
     std::vector<double> A = {BiCubic_kernel(1 + v), BiCubic_kernel(v), BiCubic_kernel(1 - v), BiCubic_kernel(2 - v)};
 
-    cv::Mat mat_A = cv::Mat(A, CV_64F);
-    cv::Mat mat_C = cv::Mat(C, CV_64F);
+    selfcv::Mat mat_A = selfcv::Mat(A);
+    selfcv::Mat mat_C = selfcv::Mat(C);
 
-    cv::Mat mat_B[3] = {cv::Mat::zeros(4, 4, CV_64F), cv::Mat::zeros(4, 4, CV_64F), cv::Mat::zeros(4, 4, CV_64F)};
+    selfcv::Mat mat_B[3] = {selfcv::Mat::zeros(4, 4), selfcv::Mat::zeros(4, 4), selfcv::Mat::zeros(4, 4)};
     // std::cerr << mat_B[0].size()<<mat_B[0]<<std::endl;
     for (int channel = 0; channel < 3; channel++)
     {
@@ -64,7 +63,7 @@ cv::Vec3b bicubicInterpolation(cv::Mat &img, cv::Point2d &p)
                 mat_B[channel].at<double>(row, col) = img.at<cv::Vec3b>(bottom_y - 1 + row, bottom_x - 1 + col)[channel];
             }
         }
-        cv::Mat f = (mat_A.t()) * mat_B[channel] * mat_C;
+        selfcv::Mat f = (mat_A.t()) * mat_B[channel] * mat_C;
         target = f.at<double>(0, 0);
         //std::cerr << target << std::endl;
         target = (target > 255) ? 255 : target;
