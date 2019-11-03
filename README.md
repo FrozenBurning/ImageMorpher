@@ -46,6 +46,7 @@ make
 
 ## 3. Run ImageMorpher
 
+**请在运行前，将提供的资源图片`meshgrid.png`放置在应用所在目录中，以获得通过网格来实时直观显示变形效果的功能。**
 ### Option1
 Enter build folder and double-click the execuable ImageMorpher.
 
