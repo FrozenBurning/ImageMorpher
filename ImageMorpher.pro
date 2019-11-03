@@ -48,9 +48,9 @@ RESOURCES += \
 
 INCLUDEPATH += 3rdparty/opencv2
 
-LIBS += -L../3rdparty/ -lopencv_highgui \
-        -lopencv_core    \
-        -lopencv_imgproc \
-        -lopencv_imgcodecs
+LIBS += $$PWD/3rdparty/libopencv_highgui.so \
+        $$PWD/3rdparty/libopencv_core.so    \
+        $$PWD/3rdparty/libopencv_imgproc.so \
+        $$PWD/3rdparty/libopencv_imgcodecs.so
 
 QMAKE_LFLAGS += -no-pie
