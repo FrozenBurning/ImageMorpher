@@ -57,5 +57,5 @@ cd build
 ```
 
 ## Report
-See [report.pdf](report.pdf)
-Latex source code at [report.tex](report.tex)
+See [report.pdf](report/report.pdf)
+Latex source code at [report.tex](report/report.tex)
