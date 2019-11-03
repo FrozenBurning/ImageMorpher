@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.5
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -260,26 +260,26 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        label->setText(QApplication::translate("MainWindow", "\345\217\230\345\275\242\346\226\271\346\263\225\357\274\232", Q_NULLPTR));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        label->setText(QApplication::translate("MainWindow", "\345\217\230\345\275\242\346\226\271\346\263\225\357\274\232", 0));
         transformer->clear();
         transformer->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "\344\270\255\345\277\203\346\211\255\346\233\262\347\225\270\345\217\230", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "\346\241\266\345\275\242/\346\236\225\345\275\242\347\225\270\345\217\230", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "TPS\345\217\230\345\275\242", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "\344\270\255\345\277\203\346\211\255\346\233\262\347\225\270\345\217\230", 0)
+         << QApplication::translate("MainWindow", "\346\241\266\345\275\242/\346\236\225\345\275\242\347\225\270\345\217\230", 0)
+         << QApplication::translate("MainWindow", "TPS\345\217\230\345\275\242", 0)
         );
-        label_2->setText(QApplication::translate("MainWindow", "\346\217\222\345\200\274\345\207\275\346\225\260\357\274\232", Q_NULLPTR));
+        label_2->setText(QApplication::translate("MainWindow", "\346\217\222\345\200\274\345\207\275\346\225\260\357\274\232", 0));
         interpolater->clear();
         interpolater->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "\346\234\200\350\277\221\351\202\273", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "\345\217\214\347\272\277\346\200\247", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "\345\217\214\344\270\211\346\254\241", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "\346\234\200\350\277\221\351\202\273", 0)
+         << QApplication::translate("MainWindow", "\345\217\214\347\272\277\346\200\247", 0)
+         << QApplication::translate("MainWindow", "\345\217\214\344\270\211\346\254\241", 0)
         );
-        groupBox->setTitle(QApplication::translate("MainWindow", "Panel", Q_NULLPTR));
-        label_4->setText(QApplication::translate("MainWindow", "\345\215\212\345\276\204\357\274\232", Q_NULLPTR));
-        radius->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
-        param_name->setText(QApplication::translate("MainWindow", "\346\234\200\345\244\247\346\211\255\346\233\262\350\247\222\345\272\246\357\274\232", Q_NULLPTR));
-        param->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("MainWindow", "Panel", 0));
+        label_4->setText(QApplication::translate("MainWindow", "\345\215\212\345\276\204\357\274\232", 0));
+        radius->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        param_name->setText(QApplication::translate("MainWindow", "\346\234\200\345\244\247\346\211\255\346\233\262\350\247\222\345\272\246\357\274\232", 0));
+        param->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         original_img->setText(QString());
         target_img->setText(QString());
         start->setText(QString());

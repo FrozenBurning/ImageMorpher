@@ -16,11 +16,12 @@ ImageMorpher is an application that can do tangent or radical distortion in imag
 
 ### 1.1 OS
 
-Ubuntu 18.04 LTS
+Ubuntu 18.04 LTS(Ubuntu 16.04上可能因为Glibc版本过低而导致编译失败)
+若使用低于该版本的Ubuntu发行版，请至少升级到**GLIBC2.27**
 
 ### 1.2 OpenCV
 
-Given in directory [3rdparty](3rdparty/opencv2)
+Given in directory [3rdparty](3rdparty/)
 
 ### 1.3 Compiler
 

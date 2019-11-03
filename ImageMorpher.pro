@@ -48,6 +48,9 @@ RESOURCES += \
 
 INCLUDEPATH += 3rdparty
 
-LIBS += $$PWD/3rdparty/lib/**
 
 QMAKE_LFLAGS += -no-pie
+
+QMAKE_CXXFLAGS += -std=c++11
+
+LIBS += $$PWD/3rdparty/lib/** 

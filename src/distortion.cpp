@@ -20,7 +20,7 @@ cv::Point2d plate2sphere(cv::Point2d point_on_plate, double radius, cv::Point2d 
         point_on_sphere.x = -1;
         point_on_sphere.y = -1;
     }
-    if (isnan(point_on_sphere.x) || isnan(point_on_sphere.y))
+    if (std::isnan(point_on_sphere.x) || std::isnan(point_on_sphere.y))
     {
         point_on_sphere.x = point_on_plate.x;
         point_on_sphere.y = point_on_plate.y;
