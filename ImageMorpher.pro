@@ -46,12 +46,11 @@ FORMS += \
 RESOURCES += \
     images.qrc
 
-INCLUDEPATH += /usr/local/include \
-               /usr/local/include/opencv \
-               /usr/local/include/opencv2
-LIBS += /usr/lib/x86_64-linux-gnu/libopencv_highgui.so \
-        /usr/lib/x86_64-linux-gnu/libopencv_core.so    \
-        /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so \
-        /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so
+INCLUDEPATH += 3rdparty/opencv2
+
+LIBS += -L../3rdparty/ -lopencv_highgui \
+        -lopencv_core    \
+        -lopencv_imgproc \
+        -lopencv_imgcodecs
 
 QMAKE_LFLAGS += -no-pie
