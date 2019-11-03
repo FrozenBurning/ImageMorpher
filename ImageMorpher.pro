@@ -46,11 +46,8 @@ FORMS += \
 RESOURCES += \
     images.qrc
 
-INCLUDEPATH += 3rdparty/opencv2
+INCLUDEPATH += 3rdparty
 
-LIBS += $$PWD/3rdparty/libopencv_highgui.so \
-        $$PWD/3rdparty/libopencv_core.so    \
-        $$PWD/3rdparty/libopencv_imgproc.so \
-        $$PWD/3rdparty/libopencv_imgcodecs.so
+LIBS += $$PWD/3rdparty/lib/**
 
 QMAKE_LFLAGS += -no-pie
