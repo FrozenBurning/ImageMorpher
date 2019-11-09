@@ -126,6 +126,11 @@
            <string>双三次</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>Lanczos插值</string>
+          </property>
+         </item>
         </widget>
        </item>
       </layout>

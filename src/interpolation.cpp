@@ -74,6 +74,51 @@ cv::Vec3b bicubicInterpolation(cv::Mat &img, cv::Point2d &p)
     return target_pix;
 }
 
+cv::Vec3b LanczosInterpolation(cv::Mat &img, cv::Point2d &p)
+{
+    cv::Point2d sampling_points[6];
+    sampling_points[0] = cv::Point2d(floor(p.x) - 2, floor(p.y) - 2);
+    double sampling_I[6];
+    cv::Vec3b target_pixel(0, 0, 0);
+    double target;
+    double a, b;
+
+    for (int i = 1; i < 6; i++)
+    {
+        sampling_points[i] = sampling_points[0] + cv::Point2d(i, i);
+    }
+
+    if (sampling_points[0].x < 0 || sampling_points[0].y < 0 || sampling_points[5].x > img.cols || sampling_points[5].y > img.rows)
+    {
+        return cv::Vec3b(0, 0, 0);
+    }
+
+    for (int channel = 0; channel < 3; channel++)
+    {
+        for (int k = 0; k < 6; k++)
+        {
+            sampling_I[k] = 0.0;
+            for (int i = 0; i < 6; i++)
+            {
+                a = Lanczos_kernel(p.x - sampling_points[i].x);
+                sampling_I[k] += a * img.at<cv::Vec3b>(sampling_points[k].y, sampling_points[i].x)[channel];
+            }
+        }
+
+        target = 0.0;
+        for (int k = 0; k < 6; k++)
+        {
+            b = Lanczos_kernel(p.y - sampling_points[k].y);
+            target += b * sampling_I[k];
+        }
+        target = (target > 255) ? 255 : target;
+        target = (target < 0) ? 0 : target;
+        target_pixel[channel] = target;
+    }
+
+    return target_pixel;
+}
+
 cv::Vec3b Interpolation_handler(cv::Mat &img, cv::Point2d &p, int inter_method_type)
 {
     switch (inter_method_type)
@@ -84,6 +129,8 @@ cv::Vec3b Interpolation_handler(cv::Mat &img, cv::Point2d &p, int inter_method_t
         return bilinearInterpolation(img, p);
     case 2:
         return bicubicInterpolation(img, p);
+    case 3:
+        return LanczosInterpolation(img, p);
     default:
         return cv::Vec3b();
         break;
@@ -106,5 +153,24 @@ double BiCubic_kernel(double x, double a)
     else //1<|x|<2
     {
         return a * x3_abs - 5 * a * x2_abs + 8 * a * x_abs - 4 * a;
+    }
+}
+
+double Lanczos_kernel(double x, double a)
+{
+    double x_abs = fabs(x);
+    if (x_abs == 0)
+    {
+        return 1.0;
+    }
+
+    else if (x_abs >= 3) // |x|>=3
+    {
+        return 0.0;
+    }
+    else
+    {
+        double pix = M_PI * x;
+        return sin(pix) / (pix)*sin(pix / a) / (pix / a);
     }
 }

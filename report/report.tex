@@ -126,6 +126,26 @@ $$
 $$
 
 最终给出插值结果:$I(x',y')=ABC^T$
+
+    \item [\textbf{Lanczos}]
+    
+    除了要求的三个插值函数之外，本文另实现了一种实用插值函数——Lanczos插值，通过控制其核函数的参数可以让其在计算速度和误差上达到双线性和双三次两者的均衡，可以说是一种极为使用的插值方法。同时也可以通过控制参数来获得一定程度的锐化效果，也能够避免严重的振铃现象。类似于双三次，Lanczos插值通过核函数来计算节点信息，同时使用的插值节点为6x6=36个。实际上它可以看作是插值节点更多的线性插值的组合，其实现方式也是将x、y两个方向分开来进行插值处理，具体方法定义如下：
+    \begin{equation}
+        P_k = \Sigma a_i \times I(x_{i},y_{k}), 0 \leq k \leq 5
+    \end{equation}
+    \begin{equation}
+        I(x',y') = \Sigma b_k \times P_k
+    \end{equation}
+    上面的中间变量$a_i,b_k$定义如下：
+    $$a_i = L(x_s - x_{i}), b_k = L(y_s,y_{i})$$
+    而其中的函数$L(x)$即上文提到的Lanczos核函数，其数学形式就是一个经过拉伸变换的带参Sinc函数，本文使用时参数$a = 3$:
+    \begin{equation}
+        L(x) = \begin{cases}
+            \frac{sin(\pi x)}{\pi x} \times \frac{sin((\pi x)/a)}{(\pi x)/a} , 0 < |x| < a\\
+            1 , x = 0\\
+            0, otherwise
+        \end{cases}
+    \end{equation}
 \end{itemize}
 
 \subsubsection{图像中心扭曲(切向畸变)}
@@ -235,7 +255,7 @@ $$
 \subsubsection{界面概览}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.3]{images/report-images/manual.png}
+    \includegraphics[scale=0.3]{../images/report-images/manual.png}
     \caption{用户界面}
 \end{figure}
 
@@ -257,18 +277,18 @@ $$
 \subsubsection{各畸变的实现}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.3]{images/report-images/tangent_dis.png}
+    \includegraphics[scale=0.3]{../images/report-images/tangent_dis.png}
     \caption{中心旋转畸变}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.3]{images/report-images/ao.png}
-    \includegraphics[scale=0.3]{images/report-images/tu.png}
+    \includegraphics[scale=0.3]{../images/report-images/ao.png}
+    \includegraphics[scale=0.3]{../images/report-images/tu.png}
     \caption{径向畸变}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.3]{images/report-images/trump.png}
+    \includegraphics[scale=0.3]{../images/report-images/trump.png}
     \caption{TPS}
 \end{figure}
 
@@ -277,25 +297,25 @@ $$
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{images/report-images/tangent_distortionnearest.png}
-    \includegraphics[scale=0.2]{images/report-images/tangent_distortionbilinear.png}
-    \includegraphics[scale=0.2]{images/report-images/tangent_distortionbicub.png}
+    \includegraphics[scale=0.2]{../images/report-images/tangent_distortionnearest.png}
+    \includegraphics[scale=0.2]{../images/report-images/tangent_distortionbilinear.png}
+    \includegraphics[scale=0.2]{../images/report-images/tangent_distortionbicub.png}
     \caption{中心旋转畸变：最近邻-双线性-双三次}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{images/report-images/radical_distortionnearest.png}
-    \includegraphics[scale=0.2]{images/report-images/radical_distortionbilinear.png}
-    \includegraphics[scale=0.2]{images/report-images/radical_distortionbicub.png}
+    \includegraphics[scale=0.2]{../images/report-images/radical_distortionnearest.png}
+    \includegraphics[scale=0.2]{../images/report-images/radical_distortionbilinear.png}
+    \includegraphics[scale=0.2]{../images/report-images/radical_distortionbicub.png}
     \caption{径向畸变：最近邻-双线性-双三次}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.28]{images/report-images/8to6nearest.png}
-    \includegraphics[scale=0.28]{images/report-images/8to6bilinear.png}
-    \includegraphics[scale=0.28]{images/report-images/8to6bicub.png}
+    \includegraphics[scale=0.28]{../images/report-images/8to6nearest.png}
+    \includegraphics[scale=0.28]{../images/report-images/8to6bilinear.png}
+    \includegraphics[scale=0.28]{../images/report-images/8to6bicub.png}
     \caption{TPS人脸变形：最近邻-双线性-双三次}
 \end{figure}
 
@@ -305,7 +325,7 @@ $$
 \subsubsection{舍入误差}
 舍入误差主要是在计算机处理图像时产生的。主要产生在\textbf{像素值的处理和坐标值的处理}中。
 
-首先是由于数字图像在产生的时候是通过对RGB三个通道的像素离散采样而得到的，在本文语境下，使用CV\_8U3C结构来存储图像意味着每一个通道像素值为0~255，采样间隔为1，因此这部分的舍入误差$\leq 1/2$。
+首先是由于数字图像在产生的时候是通过对RGB三个通道的像素离散采样而得到的，在本文语境下，使用CV\_8U3C结构来存储图像意味着每一个通道像素值为0-255，采样间隔为1，因此这部分的舍入误差$\leq 1/2$。
 
 其次在从目标图像的整数像素点到原图像的浮点像素点的坐标转换过程中，使用double类型来存储坐标值，由于double类型表示最大位数为16位，因此每一次计算均会产生$10^{-16}$的误差。这个数量级的误差在本文情境下基本可以忽略。
 
@@ -335,6 +355,9 @@ $$|R(x)|\leq \frac{5}{384} M_4(\frac{b-a}{n})^4$$其中$b-a$为区间长度，$n
 \begin{equation}
     |R| \leq \frac{5}{384}(max|\frac{\partial^4 I}{\partial x^4}|+max|\frac{\partial^4 I}{\partial y^4}|)
 \end{equation}
+
+\item [\textbf{Lanczos}]
+对于Lanczos插值，这里只做归约分析，不做精确的计算。利用中值定理和泰勒展开可以证明，对于n次的线性插值多项式，其近似误差界为$O(\Delta x^{n+1})$，而上面的三个方法的误差推导也验证了这一点。借用这个结论，只需要知道Lanczos插值等价于多少阶的多项式插值就可以分析出其误差精度。在本文前面章节已经介绍了Lanczos插值使用6x6=36个插值节点，那么其至少可以被看做是在两个方向上的6个插值节点的线性插值，因此其误差界应当与5次插值多项式同阶，即$O(x^6)$。
 \end{itemize}
 \section{总结与体会}
 本次大作业任务虽重，但带来的收获无疑是巨大的。
