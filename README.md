@@ -22,6 +22,7 @@ Ubuntu 18.04 LTS(Ubuntu 16.04上可能因为Glibc版本过低而导致编译失�
 ### 1.2 OpenCV
 
 Given in directory [3rdparty](3rdparty/)
+(Succeed in Opencv v3.2.0 v3.3.1 v3.4.0)
 
 ### 1.3 Compiler
 
