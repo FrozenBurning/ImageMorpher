@@ -16,13 +16,12 @@ ImageMorpher is an application that can do tangent or radical distortion in imag
 
 ### 1.1 OS
 
-Ubuntu 18.04 LTS(Ubuntu 16.04上可能因为Glibc版本过低而导致编译失败)
-若使用低于该版本的Ubuntu发行版，请至少升级到**GLIBC2.27**
+Ubuntu 18.04 LTS
 
 ### 1.2 OpenCV
 
 Given in directory [3rdparty](3rdparty/)
-(Succeed in Opencv v3.2.0 v3.3.1 v3.4.0)
+在3rdparty中含有编译好的动态库v3.2.0 以及opencv源码v3.4.1供不同环境情况使用。
 
 ### 1.3 Compiler
 
@@ -37,13 +36,33 @@ Then do ```qmake -v``` checking for installation
 - g++ 7.4.0 (actually lower or higher version can also works)
 
 ## 2. Build ImageMorpher
+
+### 2.1 方式一：Use Dynamic Library in 3rdparty/lib
 Enter the ImageMorpher folder, then do the following:
 ```bash
 cd path-to-ImageMorpher
 mkdir build
 cd build
 qmake -o Makefile ../ImageMorpher.pro -spec linux-g++
-make
+make 
+(or 'make -j8' for speed)
+```
+### 2.2 方式二： 如果方式一编译失败，为了避免不必要的环境问题则请使用提供的Opencv库，该步骤只需要编译opencv不需要安装，不会破坏本地环境，请放心。
+```bash
+cd path-to-ImageMorpher
+cd 3rdparty/opencv-3.4.1
+mkdir build
+cd build
+cmake -D WITH_CUDA=OFF -D CMAKE_BUILD_TYPE=Release ..
+make -j8
+(... waiting compiling opencv-3.4.1...)
+
+cd ../../..
+mkdir build_isolated
+cd build_isolated
+qmake -o Makefile ../ImageMorpher_isolated.pro -spec linux-g++
+make 
+(or 'make -j8' for speed)
 ```
 
 ## 3. Run ImageMorpher

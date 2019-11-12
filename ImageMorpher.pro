@@ -48,9 +48,8 @@ RESOURCES += \
 
 INCLUDEPATH += 3rdparty
 
-
 QMAKE_LFLAGS += -no-pie
 
 QMAKE_CXXFLAGS += -std=c++11
 
-LIBS += -L$$PWD/3rdparty/lib -lopencv_core -lopencv_imgcodecs -lopencv_imgproc
+LIBS += $$PWD/3rdparty/lib/**
