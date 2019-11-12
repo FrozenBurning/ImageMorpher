@@ -293,22 +293,24 @@ $$
 \end{figure}
 
 \subsubsection{不同插值函数的表现}
-总体来看，三种插值函数表现大致相同，但计算速度上最近邻最快，双线性次之，双三次最慢。值得注意的是在一些极限情况下，双三次能够更好的将图像细节还原，而低阶次的插值会出现明显的锯齿感，以二校门顶端的金属直杆在大角度旋转情况下尤为明显。
+总体粗略来看，四种插值函数表现大致相同，但计算速度上最近邻最快，双线性次之，双三次最慢。值得注意的是在一些极限情况下以及图像的局部中，双三次能够更好的将图像细节还原，看上去更加平滑。而低阶次的插值会出现明显的锯齿感，以二校门顶端的金属直杆在大角度旋转情况下尤为明显。而本文额外实现的Lanczos插值则兼顾了双线性的计算速度以及双三次的平滑细节，能够获得较好的效果同时也能获得极好的计算体验。
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{../images/report-images/tangent_distortionnearest.png}
-    \includegraphics[scale=0.2]{../images/report-images/tangent_distortionbilinear.png}
-    \includegraphics[scale=0.2]{../images/report-images/tangent_distortionbicub.png}
-    \caption{中心旋转畸变：最近邻-双线性-双三次}
+    \includegraphics[scale=0.3]{../images/report-images/tangent_distortionnearest.png}
+    \includegraphics[scale=0.3]{../images/report-images/tangent_distortionbilinear.png}\\
+    \includegraphics[scale=0.3]{../images/report-images/tangent_distortionbicub.png}
+    \includegraphics[scale=0.3]{../images/report-images/tangent_distortionLanczos.png}
+    \caption{中心旋转畸变(从上至下从左至右)：最近邻-双线性-双三次-Lanczos}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{../images/report-images/radical_distortionnearest.png}
-    \includegraphics[scale=0.2]{../images/report-images/radical_distortionbilinear.png}
-    \includegraphics[scale=0.2]{../images/report-images/radical_distortionbicub.png}
-    \caption{径向畸变：最近邻-双线性-双三次}
+    \includegraphics[scale=0.3]{../images/report-images/radical_distortionnearest.png}
+    \includegraphics[scale=0.3]{../images/report-images/radical_distortionbilinear.png}
+    \includegraphics[scale=0.3]{../images/report-images/radical_distortionbicub.png}
+    \includegraphics[scale=0.3]{../images/report-images/radical_distortionLanczos.png}
+    \caption{径向畸变(从上至下从左至右)：最近邻-双线性-双三次-Lanczos}
 \end{figure}
 
 \begin{figure}[H]

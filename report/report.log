@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2019.10.17)  9 NOV 2019 23:43
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2019.10.17)  12 NOV 2019 22:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1558,40 +1558,45 @@ File: ../images/report-images/tangent_distortionbilinear.png Graphic file (type 
 <../images/report-images/tangent_distortionbilinear.png>
 File: ../images/report-images/tangent_distortionbicub.png Graphic file (type bmp)
 <../images/report-images/tangent_distortionbicub.png>
+File: ../images/report-images/tangent_distortionLanczos.png Graphic file (type bmp)
+<../images/report-images/tangent_distortionLanczos.png>
+ [10]
 File: ../images/report-images/radical_distortionnearest.png Graphic file (type bmp)
 <../images/report-images/radical_distortionnearest.png>
 File: ../images/report-images/radical_distortionbilinear.png Graphic file (type bmp)
 <../images/report-images/radical_distortionbilinear.png>
 File: ../images/report-images/radical_distortionbicub.png Graphic file (type bmp)
 <../images/report-images/radical_distortionbicub.png>
- [10]
+File: ../images/report-images/radical_distortionLanczos.png Graphic file (type bmp)
+<../images/report-images/radical_distortionLanczos.png>
+ [11]
 File: ../images/report-images/8to6nearest.png Graphic file (type bmp)
 <../images/report-images/8to6nearest.png>
 File: ../images/report-images/8to6bilinear.png Graphic file (type bmp)
 <../images/report-images/8to6bilinear.png>
 File: ../images/report-images/8to6bicub.png Graphic file (type bmp)
 <../images/report-images/8to6bicub.png>
- [11] [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 375.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 375.
+ [12] [13] [14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 377.
+ [15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 377.
  (./report.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 375.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 375.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 377.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 377.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 375.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 377.
  ) 
 Here is how much of TeX's memory you used:
- 28490 strings out of 493007
- 564169 string characters out of 6136718
+ 28498 strings out of 493007
+ 564571 string characters out of 6136718
  611641 words of memory out of 5000000
- 32203 multiletter control sequences out of 15000+600000
+ 32209 multiletter control sequences out of 15000+600000
  541479 words of font info for 87 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  57i,9n,74p,10408b,459s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (13 pages).
+Output written on report.pdf (15 pages).
