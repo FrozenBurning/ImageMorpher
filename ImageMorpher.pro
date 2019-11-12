@@ -53,4 +53,4 @@ QMAKE_LFLAGS += -no-pie
 
 QMAKE_CXXFLAGS += -std=c++11
 
-LIBS += $$PWD/3rdparty/lib/** 
+LIBS += -L$$PWD/3rdparty/lib -lopencv_core -lopencv_imgcodecs -lopencv_imgproc

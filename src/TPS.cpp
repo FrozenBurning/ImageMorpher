@@ -21,6 +21,12 @@ TPS::TPS(std::string orig_file_name, std::string target_file_name)
         control_points = read_control_points(target_namewithoutExtension + ".txt"); //target img
         target_points = read_control_points(orig_namewithoutExtension + ".txt");    //from original img
 
+        if (control_points.empty() || target_points.empty())
+        {
+            isReady = false;
+        }
+        
+
         img = cv::imread(orig_file_name);
         // cv::imshow("trump",img);
         tar_img = cv::imread(target_file_name);
@@ -192,6 +198,12 @@ std::vector<cv::Point2d> TPS::read_control_points(std::string filename)
     std::vector<cv::Point2d> buf;
     double x = 0.0, y = 0.0;
     cv::Point2d p;
+
+    if (!input_file)
+    {
+        std::cout << "no control points file!" << std::endl;   
+        return buf;
+    }
     while (!input_file.eof()) //end of file?
     {
         input_file >> x >> y;
